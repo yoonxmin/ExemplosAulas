@@ -15,6 +15,7 @@ import java.util.ArrayList;
  */
 public class Boletim {
 
+	private Integer id;
 	private Aluno aluno;
 	private Integer periodo;
 	private Double media;
@@ -36,6 +37,19 @@ public class Boletim {
 		this.media = 0.0;
 		this.provas = new ArrayList<Prova>();
 	}
+	
+	/**
+	 * Id do Boletim
+	 * @return id
+	 */
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 
 	/**
 	 * Aluno do boletim.
@@ -64,69 +78,24 @@ public class Boletim {
 		return this.media;
 	}
 
-	/**
-	 * Adiciona uma avaliação ao boletim.
-	 * 
-	 * Ao adicionar a prova a média é recalculada.
-	 * 
-	 * @param prova
-	 */
-	public void addProva(Prova prova) {
-		
-		this.provas.add(prova);
-		calcularMedia();
-	}
-	
+
 	
 
 	public ArrayList<Prova> getProvas() {
 		return this.provas;
 	}
 
-	/**
-	 * Remova uma avaliação ao boletim.
-	 *
-	 * Ao remover a prova a média é recalculada.
-	 *
-	 * @param prova
-	 */
-	public void removeProva(Prova prova) {
-		this.provas.remove(prova);
+	
+	public void setMedia(double mediaCalculada) {
+		this.media = mediaCalculada;
+		
 	}
 
-	/**
-	 * Remova uma avaliação ao boletim.
-	 *
-	 * Ao remover a prova a média é recalculada.
-	 *
-	 * @param prova
-	 */
-	public void removeTodasProvas() {
-		this.provas.removeAll(provas);
+	public void resetProvas() {
+		provas.removeAll(provas);
+		
 	}
-	
-	/**
-	 * Retorna todas as provas.
-	 * 
-	 * * 
-	 * @param ArrayList<Prova>
-	 */
-	public ArrayList<Prova> returnProva() {
-		return this.provas;
-	}
-	
-	/**
-	 * Calcula a média ponderada das provas.
-	 * 
-	 * Realiza o calculo das medias das provas.
-	 */
-	private void calcularMedia() {
-		double valorTotal = 0.0;
-		for (int i = 0; i<this.provas.size(); i++) {
-			valorTotal += this.provas.get(i).getNota();
-		}
-		this.media = (valorTotal/this.provas.size());		
 
-	}
+		
 
 }
